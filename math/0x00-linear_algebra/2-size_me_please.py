@@ -4,4 +4,4 @@ def matrix_shape(matrix):
     while type(matrix) != int:
         shape.append(len(matrix))
         matrix = matrix[0]
-    return(shape)
+    return (shape)
