@@ -10,4 +10,5 @@ def add_matrices(mat1, mat2):
     if arr1.shape != arr2.shape:
         return
     else:
-        return (np.array(mat1) + np.array(mat2)).tolist()
+        mat3 = (np.array(mat1) + np.array(mat2)).tolist()
+        return (mat3)
