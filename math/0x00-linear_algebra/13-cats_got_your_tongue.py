@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Task 13"""
-
 import numpy as np
 
 
