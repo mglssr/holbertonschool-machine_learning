@@ -8,4 +8,4 @@ def np_slice(matrix, axes={}):
     sli = [slice(None)] * len(matrix.shape)
     for key, value in axes.items():
         sli[key] = slice(*value)
-    return (matrix[sli])
+    return (matrix[tuple(sli)])
