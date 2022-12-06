@@ -9,7 +9,7 @@ def poly_derivative(poly):
         return ([0])
     i = 1
     while i < len(poly):
-        if type(poly[i]) != (int, float):
+        if type(poly[i]) not in [int, float]:
             return
         dx_poly.append(i * poly[i])
         i += 1
