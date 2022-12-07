@@ -8,6 +8,8 @@ def poly_integral(poly, C=0):
     if type(C) != int or poly == [] or type(poly) != list:
         return
     int_poly.append(C)
+    if poly == [0]:
+        return (int_poly)
     i = 0
     try:
         while i < len(poly):
