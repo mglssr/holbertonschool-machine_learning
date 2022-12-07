@@ -5,7 +5,7 @@
 def poly_integral(poly, C=0):
     """function that calculates the integral of a polynomial"""
     int_poly = []
-    if type(C) != int or poly == []:
+    if type(C) != int or poly == [] or type(poly) != list:
         return
     int_poly.append(C)
     i = 0
