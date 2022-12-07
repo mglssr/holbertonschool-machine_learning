@@ -5,9 +5,6 @@
 def summation_i_squared(n):
     """ function def summation_i_squared(n):
     that tcalculates sum_{i=1}^{n} i^2:"""
-    i = 1
-    sum = 0
-    while (i <= n):
-        sum += i ** 2
-        i += 1
-    return (sum)
+    suma = [*range(n + 1)]
+    add = sum(map(lambda i: i * i, suma))
+    return (add)
