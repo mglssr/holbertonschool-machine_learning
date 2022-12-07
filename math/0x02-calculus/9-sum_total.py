@@ -8,5 +8,5 @@ def summation_i_squared(n):
     if type(n) not in [int, float]:
         return
     suma = [*range(n + 1)]
-    add = sum(map(lambda i: i * i, suma))
+    add = int(sum(map(lambda i: i * i, suma)))
     return (add)
