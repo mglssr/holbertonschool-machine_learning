@@ -8,12 +8,12 @@ def poly_derivative(poly):
         return
     dx_poly = []
     i = 1
-    while i < len(poly):
-        try:
+    try:
+        while i < len(poly):
             dx_poly.append(i * poly[i])
             i += 1
-        except Exception:
-            return
+    except Exception:
+        return
     if dx_poly == []:
         return ([0])
     return (dx_poly)
