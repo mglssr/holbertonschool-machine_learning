@@ -9,10 +9,11 @@ def poly_derivative(poly):
     dx_poly = []
     i = 1
     while i < len(poly):
-        if type(poly[i]) not in [int, float]:
+        try:
+            dx_poly.append(i * poly[i])
+            i += 1
+        except Exception:
             return
-        dx_poly.append(i * poly[i])
-        i += 1
     if dx_poly == []:
         return ([0])
     return (dx_poly)
