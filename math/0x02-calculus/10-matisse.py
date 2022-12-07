@@ -5,12 +5,12 @@
 def poly_derivative(poly):
     """function that calculates the derivative of a polynomial"""
     dx_poly = []
-    if len(poly) == 1:
-        return ([0])
     i = 1
     while i < len(poly):
         if type(poly[i]) not in [int, float]:
             return
         dx_poly.append(i * poly[i])
         i += 1
+    if dx_poly == []:
+        return ([0])
     return (dx_poly)
