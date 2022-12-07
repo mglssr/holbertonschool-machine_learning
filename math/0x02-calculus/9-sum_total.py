@@ -4,9 +4,9 @@
 
 def summation_i_squared(n):
     """ function def summation_i_squared(n):
-    that tcalculates sum_{i=1}^{n} i^2:"""
-    if type(n) not in [int, float]:
+    that tcalculates sum_{i=1}^{n} i^2 =
+    ∑i2=(n)(n+1)(2n+1)6"""
+    if type(n) != int:
         return
-    suma = [*range(n + 1)]
-    add = int(sum(map(lambda i: i * i, suma)))
-    return (add)
+    add = n * (n+1) * (2 * n + 1) / 6
+    return (int(add))
