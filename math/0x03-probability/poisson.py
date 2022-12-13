@@ -32,3 +32,22 @@ class Poisson():
             k_fac = k_fac * i
         pmf = ((lam ** k) * (e ** (-1 * lam))) / k_fac
         return (pmf)
+
+    def cdf(self, k):
+        """Calculates the value of the CDF for a given number of “successes”"""
+        e = 2.7182818285
+        lam = self.lambtha
+        if k < 0:
+            return (0)
+        if type(k) != int:
+            k = int(k)
+        s = 0
+        j = 0
+        while (j <= k):
+            k_fac = 1
+            for i in range(1, j + 1):
+                k_fac = k_fac * i
+            s = s + ((lam ** j) / k_fac)
+            j += 1
+        cdf = (e ** (-1 * lam)) * s
+        return (cdf)
