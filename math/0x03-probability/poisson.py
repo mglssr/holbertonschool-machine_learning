@@ -6,7 +6,7 @@ class Poisson():
     """Poisson distribution definition"""
     def __init__(self, data=None, lambtha=1.):
         """class contructior"""
-        if not data:
+        if data is None:
             if lambtha > 0:
                 self.lambtha = float(lambtha)
             else:
