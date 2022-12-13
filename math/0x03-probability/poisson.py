@@ -25,9 +25,10 @@ class Poisson():
         k_fac = 1
         lam = self.lambtha
         if type(k) != int:
-            k = int(k)
-        if k < lam:
-            return (0)
+            try:
+                k = int(k)
+            except ValueError:
+                return (0)
         for i in range(1, k + 1):
             k_fac = k_fac * i
         pmf = ((lam ** k) * (e ** (-1 * lam))) / k_fac
