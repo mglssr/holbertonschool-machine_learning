@@ -7,10 +7,10 @@ class Exponential():
     def __init__(self, data=None, lambtha=1.):
         """class constructor"""
         if data is None:
-            if lambtha < 0:
-                raise ValueError("lambtha must be a positive value")
-            else:
+            if lambtha > 0:
                 self.lambtha = float(lambtha)
+            else:
+                raise ValueError("lambtha must be a positive value")
         else:
             if type(data) != list:
                 raise TypeError("data must be a list")
