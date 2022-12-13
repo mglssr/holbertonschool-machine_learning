@@ -26,7 +26,7 @@ class Poisson():
         lam = self.lambtha
         if type(k) != int:
             k = int(k)
-        if k == 0:
+        if k < lam:
             return (0)
         for i in range(1, k + 1):
             k_fac = k_fac * i
