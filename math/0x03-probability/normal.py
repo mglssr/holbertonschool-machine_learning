@@ -57,6 +57,5 @@ class Normal():
 
     def cdf(self, x):
         """Calculates the value of the CDF for a given x-value"""
-        ef = (x - self.mean) / (self.stddev * (2 ** 0.5))
-        cdf = 0.5 * (1 + erf(ef))
+        cdf = 0.5 * (1 + erf((x - self.mean) / (self.stddev * (2 ** 0.5))))
         return (cdf)
