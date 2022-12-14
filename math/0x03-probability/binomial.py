@@ -34,8 +34,8 @@ class Binomial():
                     s += (data[i] - mean) ** 2
                     i += 1
                 var = s / len(data)
-                self.p = -(var / mean) + 1
-                self.n = round(mean / self.p)
+                self.n = round(mean / (- (var / mean) + 1))
+                self.p = mean / self.n
 
     def pmf(self, k):
         """Calculates the value of the PMF for a given number of “successes”"""
