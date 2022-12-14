@@ -42,7 +42,7 @@ class Binomial():
         p = self.p
         q = 1 - p
         n = self.n
-        if k <= 0:
+        if k < 0:
             return (0)
         k = int(k)
         nk = factorial(n) / (factorial(k) * factorial(n - k))
