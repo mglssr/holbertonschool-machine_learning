@@ -2,6 +2,14 @@
 """Binomial distribution class"""
 
 
+def factorial(x):
+    """function that computes the factorial function"""
+    f = 1
+    for i in range(1, x + 1):
+        f = f * i
+    return (f)
+
+
 class Binomial():
     """Binomial class distribution definition"""
     def __init__(self, data=None, n=1, p=0.5):
@@ -28,3 +36,16 @@ class Binomial():
                 var = s / len(data)
                 self.n = round(mean / (- (var / mean) + 1))
                 self.p = mean / self.n
+
+    def pmf(self, k):
+        """Calculates the value of the PMF for a given number of “successes”"""
+        p = self.p
+        q = 1 - p
+        n = self.n
+        if k <= 0:
+            return (0)
+        else:
+            k = int(k)
+        nk = factorial(n) / (factorial(k) * factorial(n - k))
+        pmf = nk * ((p ** k) * q ** (n - k))
+        return (pmf)
