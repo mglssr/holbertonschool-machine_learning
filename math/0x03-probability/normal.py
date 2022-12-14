@@ -2,6 +2,18 @@
 """Normal distribution class"""
 
 
+def erf(x):
+    """function that computes the error function"""
+    pi = 3.1415926536
+
+    a = 2 / (pi ** 0.5)
+    x_3 = (x ** 3) / 3
+    x_5 = (x ** 5) / 10
+    x_7 = (x ** 7) / 42
+    x_9 = (x ** 9) / 216
+    return (a * (x - x_3 + x_5 - x_7 + x_9))
+
+
 class Normal():
     """Normal class distribution definition"""
     def __init__(self, data=None, mean=0., stddev=1.):
@@ -42,3 +54,9 @@ class Normal():
         pdf = (1 / (self.stddev * ((2 * pi) ** 0.5))) *\
               (e ** ((self.z_score(x) ** 2) / -2))
         return (pdf)
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given x-value"""
+        ef = (x - self.mean) / (self.stddev * (2 ** 0.5))
+        cdf = 0.5 * (1 + erf(ef))
+        return (cdf)
