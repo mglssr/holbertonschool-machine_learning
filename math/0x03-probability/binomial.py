@@ -44,8 +44,7 @@ class Binomial():
         n = self.n
         if k <= 0:
             return (0)
-        else:
-            k = int(k)
+        k = int(k)
         nk = factorial(n) / (factorial(k) * factorial(n - k))
         pmf = nk * ((p ** k) * q ** (n - k))
         return (pmf)
