@@ -1,1 +1,1 @@
-# 0x01. Classification
+# supervised learning
