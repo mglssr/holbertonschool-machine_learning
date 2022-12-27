@@ -12,8 +12,5 @@ class Neuron():
         if nx < 1:
             raise ValueError("nx must be a positive integer")
         self.W = np.random.normal(size=(1, nx))
-        # The weights vector for the neuron.
         self.b = 0
-        # The bias for the neuron.
         self.A = 0
-        # The activated output of the neuron (prediction).
