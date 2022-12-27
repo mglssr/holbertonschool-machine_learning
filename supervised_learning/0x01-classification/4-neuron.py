@@ -48,4 +48,4 @@ class Neuron():
         """evaluates neuron predictions"""
         B = self.forward_prop(X)
         cost = self.cost(Y, B)
-        return (np.round(B), cost)
+        return (np.round(B).astype(int), cost)
