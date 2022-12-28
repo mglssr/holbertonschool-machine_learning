@@ -92,7 +92,6 @@ class Neuron():
                     plt.title("Training Cost")
                     plt.show()
             i += 1
-
         plt.plot(iter, costs)
         plt.xlabel("iteration")
         plt.ylabel("cost")
