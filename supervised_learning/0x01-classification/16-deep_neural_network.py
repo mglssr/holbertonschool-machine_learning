@@ -28,4 +28,4 @@ class DeepNeuralNetwork():
             if (ly > 0):
                 aux = layers[ly - 1]
             self.weights[lblw] = (np.random.randn(layers[ly], aux)
-                                       * np.sqrt(2/aux))
+                                  * np.sqrt(2/aux))
