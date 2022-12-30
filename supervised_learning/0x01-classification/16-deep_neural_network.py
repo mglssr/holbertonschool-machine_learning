@@ -20,7 +20,7 @@ class DeepNeuralNetwork():
             if type(layers[ly]) != int or layers[ly] < 0:
                 raise TypeError("layers must be a list of positive integers")
             self.weights[f"b{ly + 1}"] = np.zeros((layers[ly], 1))
-            aux = self.L
+            aux = nx
             if ly > 0:
                 aux = layers[ly - 1]
             self.weights[f"W{ly + 1}"] = (np.random.randn(layers[ly], aux)
