@@ -3,7 +3,7 @@
 import numpy as np
 
 
-class DeepNeuralNetwork():
+class DeepNeuralNetwork:
     """defines a deep neural network with one
     hidden layer performing binary classification"""
 
