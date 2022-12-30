@@ -18,17 +18,16 @@ class DeepNeuralNetwork():
         self.__L = len(layers)
         self.__cache = {}
         self.__weights = {}
-        for ly in range(self.L):
+        for ly in range(self.__L):
             if type(layers[ly]) != int or layers[ly] < 0:
                 raise TypeError("layers must be a list of positive integers")
-            lblb = f"b{ly + 1}"
-            lblw = f"W{ly + 1}"
-            self.__weights[lblb] = np.zeros((layers[ly], 1))
+            s_l = str(ly + 1)
+            self.__weights["b" + s_l] = np.zeros((layers[ly], 1))
             aux = nx
             if (ly > 0):
                 aux = layers[ly - 1]
-            self.weights[lblw] = np.random.randn(layers[ly], aux)
-            self.weights[lblw] *= np.sqrt(2/aux)
+            self.__weights["W" + s_l] = np.random.randn(layers[ly], aux)
+            self.__weights["W" + s_l] *= np.sqrt(2/aux)
 
     @property
     def L(self):
