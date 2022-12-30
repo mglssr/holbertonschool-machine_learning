@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
-"""
-    module
-"""
+"""classification"""
 import numpy as np
 
 
-class DeepNeuralNetwork:
-    """
-    Deep Neural Network
-    """
+class DeepNeuralNetwork():
+    """defines a deep neural network with one
+    hidden layer performing binary classification"""
 
     def __init__(self, nx, layers):
-        """ init function """
+        """class constructor"""
         if type(nx) != int:
             raise TypeError("nx must be an integer")
         if nx < 1:
