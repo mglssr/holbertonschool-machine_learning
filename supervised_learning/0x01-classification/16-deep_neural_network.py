@@ -29,5 +29,5 @@ class DeepNeuralNetwork:
             prev = nx
             if (lay > 0):
                 prev = layers[lay - 1]
-            self.weights["W" + s_l] = np.random.randn(layers[lay], prev)
-            self.weights["W" + s_l] *= np.sqrt(2/prev)
+            self.weights["W" + s_l] = (np.random.randn(layers[lay], prev)
+                                       * np.sqrt(2/prev))
