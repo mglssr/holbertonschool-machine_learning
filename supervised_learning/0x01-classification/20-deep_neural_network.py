@@ -65,6 +65,6 @@ class DeepNeuralNetwork():
 
     def evaluate(self, X, Y):
         """evaluates neuron predictions"""
-        B = self.forward_prop(X)
+        B, _ = self.forward_prop(X)
         cost = self.cost(Y, B)
         return (np.round(B).astype(int), cost)
