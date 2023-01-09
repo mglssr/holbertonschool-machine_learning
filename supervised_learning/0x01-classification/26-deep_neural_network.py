@@ -137,5 +137,5 @@ class DeepNeuralNetwork():
             new = pickle.load(file)
             file.close()
             return (new)
-        except:
+        except Exception:
             return
