@@ -53,7 +53,7 @@ class DeepNeuralNetwork():
         self.__cache["A0"] = X
         for ly in range(1, self.L + 1):
             aux = self.cache["A" + str(ly - 1)]
-            Z = np.matmul(self.weights["W" + str(ly)], aux)
+            Z = np.dot(self.weights["W" + str(ly)], aux)
             Z += self.weights["b" + str(ly)]
             self.__cache["A" + str(ly)] = self.sigmoid_act(Z)
         return self.cache["A" + str(ly)], self.cache

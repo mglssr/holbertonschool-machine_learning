@@ -53,7 +53,7 @@ class DeepNeuralNetwork():
         self.__cache["A0"] = X
         for ly in range(1, self.L + 1):
             aux = self.cache["A" + str(ly - 1)]
-            Z = np.matmul(self.weights["W" + str(ly)], aux)
+            Z = np.dot(self.weights["W" + str(ly)], aux)
             Z += self.weights["b" + str(ly)]
             self.__cache["A" + str(ly)] = self.sigmoid_act(Z)
         return self.cache["A" + str(ly)], self.cache
@@ -76,7 +76,7 @@ class DeepNeuralNetwork():
         for lay in range(self.L, 0, -1):
             A = self.cache["A" + str(lay - 1)]
             db = np.sum(dZ, axis=1, keepdims=True) / m
-            dW = np.matmul(dZ, A.T) / m
-            dZ = np.matmul(self.weights["W" + str(lay)].T, dZ) * (A * (1 - A))
+            dW = np.dot(dZ, A.T) / m
+            dZ = np.dot(self.weights["W" + str(lay)].T, dZ) * (A * (1 - A))
             self.__weights["W" + str(lay)] -= dW * alpha
             self.__weights["b" + str(lay)] -= db * alpha
