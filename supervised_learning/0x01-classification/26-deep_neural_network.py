@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
+
 class DeepNeuralNetwork():
     """defines a deep neural network with one
     hidden layer performing binary classification"""
