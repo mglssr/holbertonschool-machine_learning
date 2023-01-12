@@ -6,5 +6,5 @@ import numpy as np
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     """function that updates the learning rate using
     inverse time decay in numpy"""
-    al = alpha * (1 / (1 + (decay_rate * (global_step // decay_step))))
-    return (al)
+    out = alpha * (1 / (1 + (decay_rate * (global_step % decay_step))))
+    return out
