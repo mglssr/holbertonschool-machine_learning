@@ -7,11 +7,10 @@ def convolve_grayscale_same(images, kernel):
     """function that performs a same convolution on grayscale images"""
     ks = np.array(kernel.shape)
     pad = np.ceil((ks - 1) / 2).astype(int)
-    img = np.pad(images, ((0, 0), (pad[0], pad[0]), (pad[1], pad[1])),
+    padding = np.pad(images, ((0, 0), (pad[0], pad[0]), (pad[1], pad[1])),
                  'constant', constant_values=0)
-    out = np.zeros(shape=images.shape)
-    for x in range(out.shape[1]):
-        for y in range(out.shape[2]):
-            sp = img[:, x: x + ks[0], y: y + ks[1]]
-            out[:, x, y] = np.sum(sp * kernel, axis=(1, 2))
-    return out
+    output = np.zeros(shape=images.shape)
+    for x in range(output.shape[1]):
+        for y in range(output.shape[2]):
+            output[:, x, y] = np.sum(padding[:, x: x + ks[0], y: y + ks[1]] * kernel, axis=(1, 2))
+    return (output)
