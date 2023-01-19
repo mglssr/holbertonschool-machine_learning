@@ -13,5 +13,5 @@ def convolve_grayscale_same(images, kernel):
     for h in range(output.shape[1]):
         for w in range(output.shape[2]):
             output[:, h, w] = np.sum(padding[:, h: h + ks[0], w: w + ks[1]]
-                                     * kernel, ahis=(1, 2))
+                                     * kernel, axis=(1, 2))
     return (output)
