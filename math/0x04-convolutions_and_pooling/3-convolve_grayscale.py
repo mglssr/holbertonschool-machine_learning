@@ -8,22 +8,26 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     ks = np.array(kernel.shape)
     if padding == 'same':
         pad = np.ceil((ks - 1) / stride).astype(int)
-        padding = np.pad(images, ((0, 0), (pad[0], pad[0]), (pad[1], pad[1])),
-                         'constant', constant_values=0)
+        pading = np.pad(images, ((0, 0), (pad[0], pad[0]), (pad[1], pad[1])),
+                        'constant', constant_values=0)
         output = np.zeros(shape=images.shape)
-        for i in range(output.shape[1]):
-            for j in range(output.shape[2]):
-                output[:, i, j] = np.sum(padding[:, i: i + ks[0], j: j + ks[1]]
-                                         * kernel, axis=(1, 2))
     elif padding == 'valid':
         m = images.shape[0]
         convh = int((images.shape[1] - ks[0] + 1) / float(stride[0]))
         convw = int((images.shape[2] - ks[1] + 1) / float(stride[1]))
         output = np.zeros((m, convh, convw))
-        for i in range(convh):
-            for j in range(convw):
-                output[:, i, j] = np.sum((images[:, i * stride[0]: i *
-                                                 stride[0] + ks[0], j *
-                                                 stride[1]: j * stride[1] +
-                                                 ks[1]] * kernel), axis=(1, 2))
+        padding = images
+    else:
+        ps = np.array(padding)
+        pading = np.pad(images, ((0, 0), (ps[0], ps[0]), (ps[1], ps[1])),
+                        'constant', constant_values=0)
+        image_shape = images.shape[1:]
+        oh, ow = image_shape + (2 * ps) - ks + 1
+        output = np.zeros(shape=(images.shape[0], oh, ow))
+    for i in range(output.shape[1]):
+        for j in range(output.shape[2]):
+            output[:, i, j] = np.sum((padding[:, i * stride[0]: i *
+                                              stride[0] + ks[0], j *
+                                              stride[1]: j * stride[1] +
+                                              ks[1]] * kernel), axis=(1, 2))
     return (output)
