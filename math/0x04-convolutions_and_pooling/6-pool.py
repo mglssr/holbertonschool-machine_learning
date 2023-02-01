@@ -13,10 +13,12 @@ def pool(images, kernel_shape, stride, mode='max'):
     output = np.zeros((m, oh, ow, c))
     for i in range(oh):
         for j in range(ow):
+            x = i * sh
+            y = j * sw
             if mode == 'max':
-                op = np.max(images[:, j: j + kw, i: i + kh, :], axis=(1, 2))
+                op = np.max(images[:, x: x + kh, y: y + kw, :], axis=(1, 2))
             if mode == 'avg':
-                op = np.average(images[:, j: j + kw, i: i + kh, :],
+                op = np.average(images[:, x: x + kh, y: y + kw, :],
                                 axis=(1, 2))
             output[:, i, j, :] = op
     return (output)
