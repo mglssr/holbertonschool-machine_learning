@@ -6,23 +6,26 @@ import numpy as np
 def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     """function that performs forward propagation over a convolutional layer
     of a neural network"""
-    m, h_prev, w_prev = A_prev.shape[:3]
-    kh, kw, c_prev, c_new = W.shape
+    m, h, w, _ = A_prev.shape
+    kh, kw, _, nc = W.shape
     sh, sw = stride
-    if padding == 'same':
-        ph = int((h_prev - 1) * sh + kh - h_prev // 2)
-        pw = int((w_prev - 1) * sw + kw - w_prev // 2)
-    oh = int((h_prev + 2 * ph - kh) // sh + 1)
-    ow = int((w_prev + 2 * pw - kw) // sw + 1)
-    output = np.zeros((m, oh, ow, c_new))
-    padded_image = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)))
+    if padding == "same":
+        ph = int(np.ceil(((h - 1) * sh + kh - h) / 2))
+        pw = int(np.ceil(((w - 1) * sw + kw - w) / 2))
+    else:
+        ph, pw = (0, 0)
+    oh = int((((h + 2 * ph - kh) / sh) + 1))
+    ow = int((((w + 2 * pw - kw) / sw) + 1))
+    conv = np.zeros(shape=(m, oh, ow, nc))
+    padded_img = np.pad(A_prev,
+                        pad_width=((0, 0), (ph, ph), (pw, pw), (0, 0)),
+                        mode="constant")
     for i in range(oh):
+        x = sh * i
         for j in range(ow):
-            for z in range(c_new):
-                x = i * sh
-                y = j * sw
-                w = W[:, :, :, z]
-                output[:, i, j, z] = np.sum((padded_image[:, x:
-                                                          x + kh, y: y + kw, :]
-                                             * w), axis=(1, 2, 3))
-    return (activation(output + b))
+            y = sw * j
+            img_slice = padded_img[:, x: x + kh, y: y + kw, :]
+            for k in range(nc):
+                conv[:, i, j, k] = np.sum(
+                    img_slice * W[:, :, :, k], axis=(1, 2, 3))
+    return activation(conv + b)
