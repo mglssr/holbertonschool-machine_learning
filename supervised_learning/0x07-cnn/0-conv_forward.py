@@ -22,8 +22,8 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     for z in range(c_new):
         w = W[:, :, :, z]
         for i in range(oh):
+            x = i * sh
             for j in range(ow):
-                x = i * sh
                 y = j * sw
                 output[:, i, j, z] = np.sum((padded_image[:, x:
                                                           x + kh, y: y + kw, :]
