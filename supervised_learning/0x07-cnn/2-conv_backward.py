@@ -16,8 +16,8 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     else:
         ph, pw = (0, 0)
     padded_image = np.pad(A_prev,
-                        pad_width=((0, 0), (ph, ph), (pw, pw), (0, 0)),
-                        mode="constant")
+                          pad_width=((0, 0), (ph, ph), (pw, pw), (0, 0)),
+                          mode="constant")
     dA_prev = np.zeros(padded_image.shape)
     dW = np.zeros(W.shape)
     db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
@@ -32,7 +32,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                     dW[:, :, :, k] += dz * slice_img
                     dA_prev[img, x: x + kh, y: y + kw, :] += dz * W[:, :, :, k]
     if padding == "same":
-        dA_prev = dA_prev[:, ph:-ph, pw:-pw, :] 
+        dA_prev = dA_prev[:, ph:-ph, pw:-pw, :]
     else:
         pass
     return (dA_prev, dW, db)
