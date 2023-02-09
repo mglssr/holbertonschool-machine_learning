@@ -21,7 +21,6 @@ def projection_block(A_prev, filters, s=2):
     F11_b = K.layers.Conv2D(filters=filters[2], kernel_size=1,
                             strides=s, **act)(A_prev)
     F11_b = K.layers.BatchNormalization()(F11_b)
-    F12 = K.layers.BatchNormalization()(F11)
     output = K.layers.Add()([F12, F11_b])
     output = K.layers.Activation(K.activations.relu)(output)
     return output
