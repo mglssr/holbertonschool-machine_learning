@@ -10,6 +10,7 @@ def resnet50():
     as described in https://arxiv.org/pdf/1512.03385.pdf"""
     init = K.initializers.he_normal()
     act = {"kernel_initializer": init, "padding": "same"}
+
     def block(lis, prev, amount, s=2):
         o = projection_block(prev, lis, s)
         for i in range(amount - 1):
@@ -24,7 +25,9 @@ def resnet50():
     out = block([128, 128, 512], out, 4)
     out = block([256, 256, 1024], out, 6)
     out = block([512, 512, 2048], out, 3)
-    out = K.layers.AveragePooling2D(7, 1, padding='valid')(out)
-    out = K.layers.Dense(1000, activation='softmax', kernel_initializer=init)(out)
+    out = K.layers.AveragePooling2D(7, 1,
+                                    padding='valid')(out)
+    out = K.layers.Dense(1000, activation='softmax',
+                         kernel_initializer=init)(out)
     model = K.models.Model(inputs=X, outputs=out)
     return model
