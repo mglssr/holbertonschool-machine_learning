@@ -4,7 +4,7 @@
 
 def pivot_op(aii, aij):
     "resolves a simple ecuation, returns a integer"
-    return (aij) / aii
+    return (- aij) / aii
 
 
 def determinant(matrix):
@@ -41,9 +41,15 @@ def determinant(matrix):
     for i in range(shape):
         pivot = matrix[i][i]
         col = []
-        for j in range(i + 1, shape):
-            num = new_matrix[j][i] / pivot
-            for k in range(shape):
-                new_matrix[j][k] = new_matrix[j][k] - num * new_matrix[i][k]
+        for j in range(shape):
+            if j > i:
+                a = matrix[j][i]
+                col.append(a)
+        for k in range(len(col)):
+            num = pivot_op(pivot, col[k])
+            comb = [num * x for x in matrix[i][:]]
+            new_matrix[i + 1] = list(map(lambda a, b: a + b,
+                                         comb, matrix[i + 1]))
+            break
         det *= new_matrix[i][i]
     return round(det)
