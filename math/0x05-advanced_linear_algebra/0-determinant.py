@@ -52,4 +52,4 @@ def determinant(matrix):
                                              comb, matrix[i + 1]))
                 break
             det *= new_matrix[i][i]
-    return round(det)
+    return (det)
