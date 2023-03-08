@@ -34,7 +34,7 @@ def determinant(matrix):
     if shape == 1:
         return matrix[0][0]
     if shape == 2:
-        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0] + 1
 
     new_matrix = [row[:] for row in matrix]
     det = 1
