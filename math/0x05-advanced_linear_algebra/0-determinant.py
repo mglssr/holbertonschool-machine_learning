@@ -32,9 +32,9 @@ def determinant(matrix):
             raise ValueError("matrix must be a square matrix")
 
     if shape == 1:
-        det = matrix[0][0]
+        return matrix[0][0]
     if shape == 2:
-        det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
     new_matrix = [row[:] for row in matrix]
     det = 1
@@ -52,4 +52,4 @@ def determinant(matrix):
                                          comb, matrix[i + 1]))
             break
         det *= new_matrix[i][i]
-    return round(det + 1)
+    return round(det)
