@@ -10,16 +10,26 @@ def pivot_op(aii, aij):
 def determinant(matrix):
     """function that calculates the determinant of a matrix"""
 
-    if len(matrix) == 0 or type(matrix[0]) != list:
+    if type(matrix) != list:
         raise TypeError("matrix must be a list of lists")
-
-    if len(matrix[0]) == 0:
-        return 1
 
     shape = len(matrix)
 
-    if shape != len(matrix[0]):
-        raise ValueError("matrix must be a square matrix")
+    if shape == 0:
+        raise TypeError("matrix must be a list of lists")
+
+    if shape == 1:
+        if matrix[0] == []:
+            return 1
+        if type(matrix[0]) != list:
+            raise TypeError("matrix must be a list of lists")
+        return matrix[0][0]
+
+    for lists in matrix:
+        if type(lists) != list:
+            raise TypeError("matrix must be a list of lists")
+        if len(lists) != shape:
+            raise ValueError("matrix must be a square matrix")
 
     if shape == 1:
         det = matrix[0][0]
@@ -42,4 +52,4 @@ def determinant(matrix):
                                              comb, matrix[i + 1]))
                 break
             det *= new_matrix[i][i]
-    return (det)
+    return round(det)
