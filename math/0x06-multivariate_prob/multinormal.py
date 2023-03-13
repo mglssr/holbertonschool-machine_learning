@@ -7,7 +7,7 @@ class MultiNormal():
     """MultiNormal Class"""
     def __init__(self, data):
         """class constructor"""
-        if type(data) is not np.ndarray:
+        if type(data) is not np.ndarray or len(data.shape) != 2:
             raise TypeError("data must be a 2D numpy.ndarray")
 
         d, n = data.shape
