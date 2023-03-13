@@ -9,18 +9,18 @@ def correlation(C):
     if type(C) is not np.ndarray:
         raise TypeError("C must be a numpy.ndarray")
 
-    n, d = C.shape
 
     if len(C.shape) != 2:
         raise ValueError("C must be a 2D square matrix")
 
-    if n != d:
+    if C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
 
     corr_mat = np.zeros((d, d))
 
     diag = np.diag(C)
 
+    n, d = C.shape
     for i in range(d):
 
         for j in range(d):
