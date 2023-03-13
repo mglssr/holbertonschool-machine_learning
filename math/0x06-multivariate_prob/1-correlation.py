@@ -14,6 +14,9 @@ def correlation(C):
     if len(C.shape) != 2:
         raise ValueError("C must be a 2D square matrix")
 
+    if n != d:
+        raise ValueError("C must be a 2D square matrix")
+
     corr_mat = np.zeros((d, d))
 
     diag = np.diag(C)
