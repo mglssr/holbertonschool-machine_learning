@@ -11,7 +11,7 @@ def correlation(C):
 
     n, d = C.shape
 
-    if len(C.shape) != 2 or n != d:
+    if len(C.shape) != 2 or C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
 
     corr_mat = np.zeros((d, d))
