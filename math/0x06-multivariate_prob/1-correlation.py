@@ -11,6 +11,5 @@ def correlation(C):
     if len(C.shape) != 2 or C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
 
-    dia = np.diag(C)
-    corr = C / dia + 1
-    return corr
+    dia = np.corrcoef(C)
+    return dia
