@@ -12,5 +12,5 @@ def correlation(C):
         raise ValueError("C must be a 2D square matrix")
 
     dia = np.diag(C)
-    corr = C / dia
+    corr = C / dia + 1
     return corr
