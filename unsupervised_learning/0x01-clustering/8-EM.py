@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""task 7"""
+"""task 8"""
 import numpy as np
 initialize = __import__('4-initialize').initialize
 expectation = __import__('6-expectation').expectation
