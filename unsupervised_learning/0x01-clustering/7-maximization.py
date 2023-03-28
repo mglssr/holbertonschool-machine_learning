@@ -22,4 +22,3 @@ def maximization(X, g):
         return pi, m, S
     except Exception:
         return None, None, None
-    
