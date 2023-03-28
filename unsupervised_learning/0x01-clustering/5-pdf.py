@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""
-    module
-"""
+"""task 5"""
 import numpy as np
 
 
 def pdf(X, m, S):
-    """ initialize """
+    """function that calculates the probability density function of a Gaussian
+    distribution"""
     if ((type(X) != type(m) or type(m) != type(S) or type(X) is not np.ndarray
          or X.ndim != 2 or m.ndim != 1 or S.ndim != 2)):
         return None
@@ -26,4 +25,3 @@ def pdf(X, m, S):
         return result
     except Exception:
         return None
-    
