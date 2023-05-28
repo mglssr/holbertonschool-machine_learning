@@ -45,11 +45,10 @@ def determinant(matrix):
             if j > i:
                 a = matrix[j][i]
                 col.append(a)
-        for k in range(len(col)):
-            num = pivot_op(pivot, col[k])
-            comb = [num * x for x in matrix[i][:]]
-            new_matrix[i + 1] = list(map(lambda a, b: a + b,
-                                         comb, matrix[i + 1]))
-            break
+    for k in range(len(col)):
+        num = pivot_op(pivot, col[k])
+        comb = [num * x for x in matrix[i][:]]
+        new_matrix[i + 1] = list(map(lambda a, b: a + b,
+                                     comb, matrix[i + 1]))
         det *= new_matrix[i][i]
     return round(det)
