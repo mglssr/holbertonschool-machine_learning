@@ -37,16 +37,19 @@ def determinant(matrix):
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
     new_matrix = [row[:] for row in matrix]
-    det = 1
-    for i in range(shape-1):
+    det = 0
+    for i in range(shape):
         pivot = matrix[i][i]
-        for j in range(shape-1, i, -1):
+        col = []
+        for j in range(shape):
             if j > i:
                 a = matrix[j][i]
-                num = pivot_op(pivot, a)
-                comb = [num * x for x in matrix[i][:]]
-                new_matrix[i+1] = list(map(lambda a, b: a + b,
-                                       comb, matrix[i+1]))
-    for p in range(len(new_matrix)):
-        det *= new_matrix[p][p]
+                col.append(a)
+        for k in range(len(col)):
+            num = pivot_op(pivot, col[k])
+            comb = [num * x for x in matrix[i][:]]
+            new_matrix[i + 1] = list(map(lambda a, b: a + b,
+                                         comb, matrix[i + 1]))
+            break
+    det = new_matrix[i][i]
     return round(det)
