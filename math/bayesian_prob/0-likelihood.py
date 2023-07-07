@@ -13,7 +13,7 @@ def likelihood(x, n, P):
                         greater than or equal to 0")
     if int(x) > n:
         raise ValueError("x cannot be greater than n")
-    if P.ndim != 1:
+    if P.len != 1:
         raise TypeError("P must be a 1D numpy.ndarray")
     L = P.tolist()
     for i in L:
